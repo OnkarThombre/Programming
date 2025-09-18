@@ -1,6 +1,6 @@
 
 import java.util.*;
-public class MaxAndMinInArray
+public class Max_And_Min_In_Array
 {
 	public static void main(String[] args) {
 		
