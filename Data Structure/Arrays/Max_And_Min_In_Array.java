@@ -20,7 +20,7 @@ public class Max_And_Min_In_Array
 		
 		System.out.println(Arrays.toString(arr));   
 		
-		int max = arr[0];
+		int max = arr[0];   // Integer.MIN_VALUE;  // this keep the minimum value of int -2147483648
 		int min = arr[0];
 		
 		for(int i = 1; i< arr.length ; i++)        //for(int i = 0; i< arr.length ; i++)    //In your loop, you can start from i = 1 instead of i = 0 since you already initialized max and min with arr[0].
