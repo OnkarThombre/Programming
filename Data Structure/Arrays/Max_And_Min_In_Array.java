@@ -25,7 +25,7 @@ public class Max_And_Min_In_Array
 		
 		for(int i = 1; i< arr.length ; i++)        //for(int i = 0; i< arr.length ; i++)    //In your loop, you can start from i = 1 instead of i = 0 since you already initialized max and min with arr[0].
 																								//That avoids one redundant comparison.  //avoid one extra unuseful iteration
-		{
+		{											// when you take Integer.MIN_VALUE; you have to start loop from 0 index
 		    if(arr[i] > max)
 		    {
 		        max = arr[i];
