@@ -23,7 +23,8 @@ public class MaxAndMinInArray
 		int max = arr[0];
 		int min = arr[0];
 		
-		for(int i = 0; i< arr.length ; i++)
+		for(int i = 1; i< arr.length ; i++)        //for(int i = 0; i< arr.length ; i++)    //In your loop, you can start from i = 1 instead of i = 0 since you already initialized max and min with arr[0].
+																								//That avoids one redundant comparison.  //avoid one extra unuseful iteration
 		{
 		    if(arr[i] > max)
 		    {
@@ -39,3 +40,14 @@ public class MaxAndMinInArray
 		
 	}
 }
+
+
+output 
+	Enter Array elements
+354
+56
+0
+-7
+55
+[354, 56, 0, -7, 55]
+max = 354 min = -7
