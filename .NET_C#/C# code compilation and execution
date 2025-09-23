@@ -1,0 +1,101 @@
+
+
+## 🔹 **C# Code Compilation and Execution Flow**
+
+C# code does **not run directly on hardware**. It goes through **multiple steps** before execution.
+
+---
+
+### **1. Writing the Code**
+
+* You write your code in a `.cs` file using a text editor or Visual Studio / VS Code.
+  Example: `Program.cs`
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+```
+
+---
+
+### **2. Compilation (csc / Roslyn)**
+
+* The **C# compiler (`csc`)** converts your **C# code** into **Intermediate Language (IL)** or **Common Intermediate Language (CIL)**.
+* IL is **platform-independent**, not machine code.
+* Command line example:
+
+```bash
+csc Program.cs
+```
+
+* Output: `Program.exe` (Windows) or `.dll` (library) containing IL.
+
+> Modern .NET uses **Roslyn**, the open-source compiler, but the process is conceptually the same.
+
+---
+
+### **3. Metadata and Assembly**
+
+* The compiled `.exe` or `.dll` contains:
+
+  1. **IL code** – instructions for the .NET runtime.
+  2. **Metadata** – information about classes, methods, types, and references.
+
+---
+
+### **4. Execution by CLR**
+
+* When you run the program (`Program.exe`), the **CLR (Common Language Runtime)** takes over:
+
+  1. **Class Loader** → Loads the assembly.
+  2. **JIT Compiler (Just-In-Time)** → Converts IL to **native machine code** specific to the OS and CPU.
+  3. **Execution Engine** → Runs the machine code on the CPU.
+
+---
+
+### **5. Output**
+
+* The program executes, and the user sees:
+
+```
+Hello World
+```
+
+---
+
+### 🔹 **Flow Summary**
+
+```
+C# Source Code (.cs)
+        |
+        v
+C# Compiler (csc / Roslyn)
+        |
+        v
+IL / Metadata in Assembly (.exe / .dll)
+        |
+        v
+CLR (JIT Compilation)
+        |
+        v
+Machine Code -> Execution -> Output
+```
+
+---
+
+### ✅ **Key Points**
+
+* C# is **compiled to IL**, then executed by **CLR**.
+* JIT converts IL → machine code at runtime.
+* Allows **platform independence** (Windows, Linux, macOS) via .NET Core / .NET 5+.
+
+---
+
+
