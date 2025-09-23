@@ -1,0 +1,26 @@
+
+## 🌀 **Order of Execution in Java**
+
+1. **Class Loading**
+
+   * JVM loads the class into memory.
+   * Static variables are allocated memory with **default values**.
+
+2. **Class Initialization**
+
+   * Static variables are assigned their **explicit values**.
+   * **Static blocks** execute in the order they are written.
+   * ✅ This all happens **immediately after class loading**.
+
+3. **Main Method Call**
+
+   * Once static initialization is complete, JVM executes the `main()` method.
+
+---
+
+## ✅ Final Statement
+
+* **Static members run after class loading, during class initialization, and always before the `main()` method.**
+
+---
+
