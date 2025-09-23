@@ -1,0 +1,104 @@
+
+
+## 🔹 **What is a Namespace in C#?**
+
+A **namespace** is a **container that holds classes, structs, enums, interfaces, and delegates**.
+
+* It helps **organize code** and **avoid name conflicts**.
+* Think of it like a **folder in your computer**: files in different folders can have the same name.
+
+---
+
+### **Why use Namespaces?**
+
+1. **Avoid naming conflicts**
+
+   * Two classes with the same name can exist in different namespaces.
+2. **Organize code logically**
+
+   * Group related classes together.
+3. **Easy to maintain and read**
+
+---
+
+### **Syntax**
+
+```csharp
+namespace MyApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World");
+        }
+    }
+}
+```
+
+* `MyApplication` is the namespace.
+* `Program` class is **inside** this namespace.
+
+---
+
+### **Using Namespaces**
+
+* If you want to use a class from another namespace, use the `using` keyword:
+
+```csharp
+using System;  // System namespace contains Console class
+
+namespace MyApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World");  // Using Console from System
+        }
+    }
+}
+```
+
+* You can also use **fully qualified names** instead of `using`:
+
+```csharp
+System.Console.WriteLine("Hello World");
+```
+
+---
+
+### **Nested Namespaces**
+
+* You can create namespaces inside namespaces:
+
+```csharp
+namespace Company.Project.Module
+{
+    class Employee
+    {
+    }
+}
+```
+
+* To use `Employee` class, either:
+
+  ```csharp
+  using Company.Project.Module;
+  Employee emp = new Employee();
+  ```
+
+  Or:
+
+  ```csharp
+  Company.Project.Module.Employee emp = new Company.Project.Module.Employee();
+  ```
+
+---
+
+### ✅ **Summary**
+
+* Namespace = **logical container for classes and types**
+* Helps **avoid naming conflicts**
+* `using` keyword = simplifies access
+* Supports **nested namespaces**
