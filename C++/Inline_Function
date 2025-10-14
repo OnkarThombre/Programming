@@ -1,0 +1,125 @@
+## 🟩 **📘 What is an Inline Function in C++?**
+
+An **inline function** is a function whose **code is expanded at the point of call** — instead of performing a normal function call (which involves jumping to another memory location).
+
+In other words:
+
+> When you call an inline function, the compiler replaces the function call with the **actual code (body)** of that function.
+
+It’s mainly used to **save function call overhead** for **small and frequently used functions**.
+
+---
+
+## 🧩 **Syntax**
+
+```cpp
+inline return_type function_name(parameters)
+{
+    // function body
+}
+```
+
+Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+inline int square(int x)
+{
+    return x * x;
+}
+
+int main()
+{
+    cout << "Square of 5 = " << square(5) << endl;
+    return 0;
+}
+```
+
+➡️ During compilation, this line:
+
+```cpp
+cout << "Square of 5 = " << square(5);
+```
+
+is replaced internally with:
+
+```cpp
+cout << "Square of 5 = " << 5 * 5;
+```
+
+---
+
+## ⚙️ **Why Use Inline Functions?**
+
+✔️ To **reduce function call overhead** (especially for small functions).
+✔️ To **make code faster** in cases where the function body is small.
+✔️ To make **short utility functions** more readable and efficient.
+
+---
+
+## 🚫 **When Not to Use Inline Functions**
+
+The compiler **may ignore** the `inline` request in some situations:
+
+1. If the function is **too large**.
+2. If it contains **loops, switch, recursion**, or **static variables**.
+3. If the function’s definition is **not visible** at the point of call (e.g., defined in another translation unit).
+
+So `inline` is a **request**, not a command — the compiler decides whether to inline or not.
+
+---
+
+## 🧠 **Points to Remember**
+
+| Concept          | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| Declaration      | Use `inline` keyword before the function definition.  |
+| Placement        | Usually defined in header files.                      |
+| Not Suitable For | Large functions, recursive functions.                 |
+| Benefit          | Avoids overhead of function call (push/pop to stack). |
+| Drawback         | Increases code size (because of duplication).         |
+
+---
+
+## ⚡ Example — Inline vs Normal Function
+
+```cpp
+#include <iostream>
+using namespace std;
+
+inline void greet() {
+    cout << "Hello, Onkar!" << endl;
+}
+
+void normal() {
+    cout << "Normal function called!" << endl;
+}
+
+int main() {
+    greet();   // Inline expansion
+    normal();  // Regular call
+}
+```
+
+👉 `greet()` may get expanded inline by compiler
+👉 `normal()` will always have a function call overhead.
+
+---
+
+## 📦 Real Use Case
+
+Inline functions are often used in:
+
+* **Header files (`.h`)** for short utility methods.
+* **Classes**: All member functions defined **inside** a class are **implicitly inline**.
+
+Example:
+
+```cpp
+class Math {
+public:
+    int add(int a, int b) { return a + b; } // implicitly inline
+};
+```
