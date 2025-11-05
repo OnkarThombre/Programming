@@ -1,0 +1,75 @@
+/* Problem Statement
+Given a List in Java that may contain duplicate elements, write a program to remove all duplicates while preserving the original insertion order of elements.
+
+Example 1:
+
+Input:
+
+list = [10, 20, 10, 30, 20, 40]
+
+
+Output:
+
+[10, 20, 30, 40]
+
+Example 2:
+
+Input:
+
+list = ["apple", "banana", "apple", "orange", "banana"]
+
+
+Output:
+
+["apple", "banana", "orange"]
+
+
+*/
+
+package com.list;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+public class RemoveDuplicateFromList {
+	public static void main1(String[] args) {
+//		List<Integer> list = new ArrayList<Integer>();
+//		list.add(10);
+//		list.add(20);
+//		list.add(10);
+//		list.add(30);
+//		list.add(20);
+//		list.add(40);
+		
+		List<Integer> list = Arrays.asList(10,20,10,30,20,40);
+//		List<Integer> list = new ArrayList<>(Arrays.asList(10, 20, 30));
+		
+		List<Integer> resultList = new ArrayList<Integer>();
+		
+		for(int ele : list)
+		{
+			if(!(resultList.contains(ele)))
+			{
+				resultList.add(ele);
+			}
+		}
+		
+		System.out.println("list of dupliacet elements : " + list);
+		System.out.println("list of non-duplicate elements : " + resultList);
+	}
+	
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(10,20,10,20,30,30,40,10,40,20));
+		
+		Set<Integer> set = new LinkedHashSet<Integer>(list);
+		
+		List<Integer> resList = new ArrayList<Integer>(set);
+		
+		System.out.println("list of dupliacet elements : " + list);
+		System.out.println("list of non-duplicate elements : " + resList);
+		
+	}
+}
