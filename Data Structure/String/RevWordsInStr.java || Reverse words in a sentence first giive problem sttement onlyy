@@ -1,0 +1,67 @@
+/*
+  Given a string str that contains a sentence, reverse the order of words in the sentence without reversing the individual words themselves.
+
+Example 1:
+
+Input:
+
+str = "I am from Pune"
+
+
+Output:
+
+"Pune from am I"
+
+Example 2:
+
+Input:
+
+str = "Java is fun"
+
+
+Output:
+
+"fun is Java"
+*/
+
+public class RevWordsInStr {
+    public static void main(String[] args) {
+        String str = "I am from Pune";
+
+        String[] arr = str.split(" ");
+
+        String rev = "";
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // rev += (arr[i] + " ");
+            rev += arr[i];
+            if (i != 0)
+                rev = rev + " ";
+        }
+        System.out.println("Original String : " + str);
+        System.out.println("Reversed String : " + rev);
+    }
+
+}
+/*
+ * way 2
+ * import java.util.*;
+ * 
+ * public class ReverseWords {
+ * public static void main(String[] args) {
+ * String str = "I am from Pune";
+ * 
+ * // Split the string into words
+ * String[] words = str.split(" ");
+ * 
+ * // Reverse the array
+ * Collections.reverse(Arrays.asList(words));
+ * 
+ * // Join the words back into a sentence
+ * String reversed = String.join(" ", words);
+ * 
+ * System.out.println("Original: " + str);
+ * System.out.println("Reversed: " + reversed);
+ * }
+ * }
+ * 
+ */
