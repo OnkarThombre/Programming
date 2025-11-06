@@ -44,3 +44,125 @@ public class FirstNonRepeatingCharInStr {
     }
 
 }
+
+
+/*
+---
+
+## 🧠 Your Question (Rephrased)
+
+You are asking:
+
+> “Since HashMap doesn’t maintain insertion order, when I store characters in it, could that affect which character is found as the *first non-repeating* one?”
+
+That’s a brilliant thought 💡 — and you’re absolutely right to ask this.
+Let’s explain how your code *still works correctly* (and when it might not).
+
+---
+
+## 🧩 Step-by-Step Reasoning
+
+### 🔹 1️⃣ What `HashMap` Does
+
+`HashMap` does **not maintain insertion order**.
+It stores key-value pairs based on **hash codes** — so the internal order may look random.
+
+Example:
+
+```java
+Map<Character, Integer> map = new HashMap<>();
+map.put('c', 1);
+map.put('a', 3);
+map.put('b', 2);
+System.out.println(map);
+```
+
+Output might look like:
+
+```
+{a=3, b=2, c=1}
+```
+
+or
+
+```
+{b=2, a=3, c=1}
+```
+
+(⚠️ The order is *not guaranteed*.)
+
+---
+
+### 🔹 2️⃣ So Why Does Your Code Still Give Correct Output?
+
+Because — you’re **not using the map’s order** at all when checking for the first non-repeating character.
+Instead, you’re **iterating over the original string** again 👇
+
+```java
+for (char ele : str.toCharArray()) {
+    if (frequency.get(ele) == 1) {
+        System.out.println("First non repeating character " + ele);
+        return;
+    }
+}
+```
+
+✅ This loop ensures you’re checking characters in the **same order as they appeared in the string**.
+
+You’re *only* using the map to **store counts**, not to decide order.
+So even if the map stores `{a=3, c=1, b=2, d=1, e=1}` internally in random order,
+you’ll check the string `"caaabbcdbe"` as:
+`c → a → a → a → b → b → c → d → b → e`
+
+So first time `frequency.get(ele) == 1`, that’s your *first non-repeating character* in **string order**, not map order.
+
+✅ Hence your code is correct and reliable.
+
+---
+
+### 🔹 3️⃣ But — If You Were Iterating Over Map Directly
+
+If your code was like this:
+
+```java
+for (Map.Entry<Character, Integer> entry : frequency.entrySet()) {
+    if (entry.getValue() == 1) {
+        System.out.println(entry.getKey());
+        break;
+    }
+}
+```
+
+⚠️ Then the **result could be wrong**, because `HashMap` does not maintain insertion order — it might print the *second* non-repeating character first.
+
+---
+
+### 🔹 4️⃣ If You Want a Map That Keeps Order
+
+You can use:
+
+```java
+Map<Character, Integer> frequency = new LinkedHashMap<>();
+```
+
+✅ `LinkedHashMap` maintains **insertion order**.
+So if you later decide to iterate over the map entries, you’ll still get characters in the same order as they appeared in the string.
+
+---
+
+## ✅ Summary Table
+
+| Map Type        | Maintains Order? | Recommended For This Task?                            |
+| --------------- | ---------------- | ----------------------------------------------------- |
+| `HashMap`       | ❌ No             | ✅ Yes, since you recheck using string order           |
+| `LinkedHashMap` | ✅ Yes            | ✅ Even safer if you want map order to match insertion |
+| `TreeMap`       | ✅ Sorted by key  | ❌ Not suitable (changes order)                        |
+
+---
+
+## 🗣️ Interview-Ready Answer
+
+> “By default, `HashMap` doesn’t maintain insertion order — it arranges entries based on hash codes.
+> However, in this problem, order doesn’t matter during counting, because we again iterate over the string to find the first non-repeating character in the original order.
+> If we were to iterate over the map itself, then we’d use `LinkedHashMap` to preserve insertion order.”
+*/
