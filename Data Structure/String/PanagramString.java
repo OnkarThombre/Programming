@@ -2,9 +2,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PanagramString {
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		String str = "The quick brown fox jumps over the lazy dog";
-;
+
 		if(isPanagram(str))
 		{
 			System.out.println("The strings are anagrams.");
@@ -35,15 +35,5 @@ public class PanagramString {
 		{
 			return false;
 		}
-	}
-	
-	public static void main(String[] args) {
-		String str = "The quick brown fox jumps over the lazy dog";
-		
-		int arr[] = new int[26];
-		
-		str = str.toLowerCase();
-		
-		
 	}
 }
