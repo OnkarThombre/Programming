@@ -58,3 +58,58 @@ public class Main
 
 // [40, 10, 20, 4]
 // Firstmax = 40 SECOND max = 20
+
+
+
+
+
+
+
+
+
+
+
+
+package dsaQ;
+
+public class Second_Max {
+	public static void main(String[] args) {
+		int arr[] = {10,5,0,3,-1,20,15,35,34};
+//		int arr[]  = {5,5,5,5};
+		int fmax = Integer.MIN_VALUE;
+		int secMax = Integer.MIN_VALUE;
+		boolean isFoundSecMax = false;
+		for(int num : arr)
+		{
+			if(num > fmax)
+			{
+				secMax = fmax;
+				fmax = num;
+				isFoundSecMax = true;
+			}
+			else if(num > secMax && num < fmax)
+			{
+				secMax = num;
+				isFoundSecMax = true;
+			}
+		}
+		
+//		for(int num : arr)
+//		{
+//			if(num > secMax && num < fmax)
+//			{
+//				secMax = num;
+//			}
+//		}
+		if(!isFoundSecMax)//(secMax == Integer.MIN_VALUE)   jar maza array asa asel then int arr[] = { Integer.MIN_VALUE, 5 }; he condition liha  
+			
+			//int arr[]  = {5,5,5,5}; this condition require when all elements in an array are same
+		{
+			System.out.println("fmax " + fmax+ "\nSecondmax element not exist");
+		}
+		else {
+			System.out.println("First max element : "+ fmax + "\nSecond Max elemet : " + secMax);
+		}
+		
+	}
+}
