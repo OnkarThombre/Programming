@@ -28,7 +28,8 @@ namespace DSA
                     return new int[] { map[needed], i};
                 }
 
-                map.Add(current, i);
+                //map.Add(current, i);
+                 map[current] = i;
             }
 
             return new int[] { -1 , -1}; 
