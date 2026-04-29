@@ -35,7 +35,7 @@ public class LongestString {
         String longest = sarr[0];  // here we are storing first element purpose fully because in int max  = 0; we store 
         // 0 but here it is String longest ig we store null then at certain case nulll pointer exception can occur
         for (int i = 1; i < sarr.length; i++) {
-            if (sarr[i].length() > longest.length()) {
+            if (sarr[i] != null && sarr[i].length() > longest.length()) {   // sarr[i] != null added this because  in string arr any one string can be null ["", "a", "ab", "abc"]
                 longest = sarr[i];
             }
         }
@@ -48,6 +48,7 @@ public class LongestString {
         // String sarr[] = {}; // here array lenght is 0
         // String sarr[] = {""}; // here array lenght is 1 because it has one element which is inside " " but right now it is nothing 
         // and arr[0].lenght is 0
+        //["", "a", "ab", "abc"]
         System.out.println("Lomgest String is " + longestString(sarr));
 
 
